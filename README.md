@@ -9,4 +9,6 @@ Our goal is to develop a robust and efficient object detection model capable of 
 
 ## Data
 
+Source: [Military Aircraft Detection](https://www.kaggle.com/datasets/a2015003713/militaryaircraftdetectiondataset)
+
 The project uses a curated dataset of military aircraft containing images and bounding box annotations for various aircraft types such as Tornado, A400M, F18, etc.

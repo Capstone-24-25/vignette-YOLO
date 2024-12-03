@@ -17,3 +17,7 @@ The project uses a curated dataset of military aircraft containing images and bo
 Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016, June). You Only Look Once: Unified, Real-Time Object Detection. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR).
 
 Jiang, P., Ergu, D., Liu, F., Cai, Y., & Ma, B. (2022). A Review of Yolo Algorithm Developments. Procedia Computer Science, 199, 1066–1073. doi:10.1016/j.procs.2022.01.135
+
+## Countributors
+
+Bennett Bishop, Joseph Zaki, Luke Dillon, Benjamin Drabeck,	Samantha Su

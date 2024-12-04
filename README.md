@@ -1,6 +1,6 @@
 # Military Aircraft Detection Using YOLO
 
-Vignette on building a YOLO (You Only Look Once) object detection model to identify, classify, and localize different types of military aircraft; created as a class project for PSTAT197A in Fall 2023.
+Vignette on building a YOLO (You Only Look Once) object detection model to identify, classify, and localize different types of military aircraft; created as a class project for PSTAT197A in Fall 2024.
 
 ## Countributors
 

@@ -1,74 +1,96 @@
+import csv
 import os
-import glob
-import shutil
 import numpy as np
-import pandas as pd
+import shutil
+from glob import glob
 from tqdm import tqdm
+from random import shuffle, seed
+from ultralytics import YOLO
 
-# Generates array of all class labels
-parent_folder = "../data/crop/"
-classes = np.array([folder for folder in os.listdir(parent_folder) if os.path.isdir(os.path.join(parent_folder, folder))])
+parent_dir = "data/crop"
+classes = np.array([folder for folder in os.listdir(parent_dir) if os.path.isdir(os.path.join(parent_dir, folder))])
 
-# Aggregating csv and jpg paths
-csv_paths = glob.glob("../data/dataset/*.csv")
-jpg_paths = glob.glob("../data/dataset/*.jpg")
-csv_paths.sort()
-jpg_paths.sort()
+def csv_to_txt(csv_path, output_path):
+    with open(csv_path, 'r') as csv_file:
+        reader = csv.DictReader(csv_file)
+    
+        for row in reader:
+            filename = row['filename']
+            width = float(row['width'])
+            height = float(row['height'])
+            obj_num = np.where(classes == row['class'])[0][0]
+            xmin = float(row['xmin'])
+            ymin = float(row['ymin'])
+            xmax = float(row['xmax'])
+            ymax = float(row['ymax'])
 
-# Checks to see if csv contains valid class label
-def check_valid_csv(csv_path):
-	df = pd.read_csv(csv_path)
-	return all(df['class'].isin(classes))
+            x_center = ((xmin + xmax) / (2 * width))
+            y_center = ((ymin + ymax) / (2 * height))
+            norm_width = (xmax - xmin) / width
+            norm_height = (ymax - ymin) / height
 
-valid_csv_paths = []
-valid_jpg_paths = []
+            yolo_format_line = f'{obj_num} {x_center} {y_center} {norm_width} {norm_height}\n'
 
-for csv_path, jpg_path in tqdm(zip(csv_paths, jpg_paths)):
-	if check_valid_csv(csv_path):
-		valid_csv_paths.append(csv_path)
-		valid_jpg_paths.append(jpg_path)
+            txt_filename = os.path.join(output_path, f'{filename}.txt')
 
-num_valid = len(valid_csv_paths)
-print(f'Valid Paths: {num_valid}')
+            with open(txt_filename, 'a') as txt_file:
+                txt_file.write(yolo_format_line)
 
-# Formats data into train/test/validation folders
-for i, (csv_path, jpg_path) in enumerate(tqdm(zip(valid_csv_paths, valid_jpg_paths), total = num_valid)):
-	annotations = np.array(pd.read_csv(csv_path))
-	if i < int(len(valid_csv_paths) * 0.8):   # 80% train
-		img_folder = "../data/ultralytics/train/images/"
-		label_folder = "../data/ultralytics/train/labels/"
-	elif i < int(len(valid_csv_paths) * 0.9): # 10% test
-		img_folder = "../data/ultralytics/test/images/"
-		label_folder = "../data/ultralytics/test/labels/"
-	else:                                     # 10% valid
-		img_folder = "../data/ultralytics/valid/images/"
-		label_folder = "../data/ultralytics/valid/labels/"
+def train_test_valid(jpgs, csvs, train_ratio, test_ratio, rand_seed=1492):
+    jpgs.sort()
+    csvs.sort()
+    
+    joined_paths = list(zip(jpg_paths, csv_paths))
 
-	shutil.copy(jpg_path, img_folder + os.path.basename(jpg_path))
-	txt_file_path = label_folder + os.path.basename(csv_path)[:-4] + '.txt'
+    seed(rand_seed)
+    shuffle(joined_paths)
 
-	with open(txt_file_path, 'w') as f:
-		for annotation in annotations:
-			width = annotation[1]
-			height = annotation[2]
-			class_name = annotation[3]
-			xmin = annotation[4]
-			ymin = annotation[5]
-			xmax = annotation[6]
-			ymax = annotation[7]
-			x_center = 0.5 * (xmin + xmax) / width
-			y_center = 0.5 * (ymin + ymax) / height
-			b_width = (xmax - xmin) / width
-			b_height = (ymax - ymin) / height
-			class_num = np.where(classes == class_name)[0][0]
-			f.write(f'{class_num} {x_center} {y_center} {b_width} {b_height}\n')
+    train_end = int(len(joined_paths) * train_ratio)
+    test_end = train_end + int(len(joined_paths) * test_ratio)
 
-# YAML file for ultralytics model
-classes_str = ', '.join([f'"{c}"' for c in classes])
-with open('../data/ultralytics/mad.yaml', 'w') as f:
-    yaml_string = f'train: ../data/ultralytics/train\n' \
-                  f'val: ../data/ultralytics/valid\n' \
-                  f'test: ../data/ultralytics/test\n' \
-                  f'nc: {len(classes)}\n' \
-                  f'names: [{classes_str}]'
-    f.write(yaml_string)
+    train_paths = joined_paths[:train_end]
+    test_paths = joined_paths[train_end:test_end]
+    valid_paths = joined_paths[test_end:]
+
+    return train_paths, test_paths, valid_paths
+
+def data_copy(path_list, target_img_dir, target_label_dir):
+    for paths in tqdm(path_list):
+        jpg = paths[0]
+        labels = paths[1]
+
+        csv_to_txt(labels, target_label_dir)
+        shutil.copy(jpg, target_img_dir)
+
+######################################
+#           Run Preprocess           #
+######################################
+
+jpg_paths = glob("data/dataset/*.jpg")
+csv_paths = glob("data/dataset/*.csv")
+
+os.makedirs("data/ultralytics/data/train/images/", exist_ok=True)
+os.makedirs("data/ultralytics/data/train/labels/", exist_ok=True)
+os.makedirs("data/ultralytics/data/test/images/", exist_ok=True)
+os.makedirs("data/ultralytics/data/test/labels/", exist_ok=True)
+os.makedirs("data/ultralytics/data/valid/images", exist_ok=True)
+os.makedirs("data/ultralytics/data/valid/labels", exist_ok=True)
+
+train_paths, test_paths, valid_paths = train_test_valid(jpg_paths, csv_paths, 0.8, 0.1)
+
+data_copy(test_paths,"data/ultralytics/data/test/images/", "data/ultralytics/data/test/labels/")
+data_copy(valid_paths,"data/ultralytics/data/valid/images/", "data/ultralytics/data/valid/labels/")
+data_copy(train_paths,"data/ultralytics/data/train/images/", "data/ultralytics/data/train/labels/")
+
+with open("data/ultralytics/data.yaml", 'w') as file:
+    class_names = ', '.join(classes)
+    data_path = "data/ultralytics/data/"
+    train_path = "train/"
+    test_path = "test/"
+    valid_path = "valid/"
+    yaml_str = f'path: {data_path}\n'\
+               f'train: {train_path}\n'\
+               f'val: {valid_path}\n'\
+               f'nc: {len(classes)}\n'\
+               f'names: [{class_names}]'
+    file.write(yaml_str)

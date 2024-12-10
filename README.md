@@ -52,4 +52,10 @@ cd vignette-YOLO
 
 ##  Instructions on Use (draft)
 
+We trained two models stored in the models directory, yolov11n-best and yolov11m-best. Please use the yolov11m-best model, as it is our better performing model.
 
+To load and use this model use the ultralytics package and follow the following steps.
+- run the yolo_preprocess.py script in the scripts folder
+- import YOLO from ultraytics
+- find the **absolute** path (not relative) to the model directory (e.g. mine is: C:\Users\luke\Documents\class\pstat197a\vignette-YOLO\models\yolov11m-best.pt)
+- run this code to load the model: model = YOLO("C:\\Users\\luke\\Documents\class\\pstat197a\\vignette-YOLO\\models\\yolov11m-best.pt", task="detect")

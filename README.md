@@ -6,7 +6,7 @@ A vignette showcasing the development of a YOLO (You Only Look Once) object dete
 
 Bennett Bishop, Joseph Zaki, Luke Dillon, Benjamin Drabeck,	Samantha Su
 
-## Vignette abstract ✍️
+## Vignette Abstract ✍️
 
 Vignette topic: This project involves building a YOLO (You Only Look Once) object detection model to identify, classify, and localize different types of military aircraft. The model is trained on the Military Aircraft Detection Dataset, which contains images and annotations of various military aircraft types. Our goal is to develop a robust and efficient object detection model capable of detecting multiple aircraft types in an image with high accuracy, while leveraging the YOLO architecture for real-time performance.
 
@@ -29,7 +29,7 @@ This project utilizes YOLOv11, specifically the YOLOv11n implementation by Ultra
 - README.md: Provides an overview of the project
 - main.ipynb: Jupyter notebook for running the main analysis or workflows.
 
-## Reference list 🧑‍🎓
+## Reference List 🧑‍🎓
 
 Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016, June). You Only Look Once: Unified, Real-Time Object Detection. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR).
 

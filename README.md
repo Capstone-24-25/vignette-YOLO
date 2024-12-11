@@ -46,6 +46,11 @@ cd vignette-YOLO
 ```
 
 3. Create a new branch for your contribution
+
+```
+git checkout -b <branch-name>
+```
+
 4. Make your changes and ensure the project still works as expected. Use pytest to run tests if provided
 5. Push Changes to Your Fork
 6. Open a Pull Request

@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH -p gpu
-#SBATCH -gres=gpu:1
+#SBATCH --gres=gpu:1
 #SBATCH -o outLog
 #SBATCH -e errLog
 #SBATCH --mail-user=josephzaki@ucsb.edu
@@ -11,7 +11,7 @@
 
 module purge all
 module load cuda/12.1
-source source /sw/csc/anaconda/anaconda3/bin/activate
+source /sw/csc/anaconda/anaconda3/bin/activate
 conda activate ultralytics-env
 
 cd $SLURM_SUBMIT_DIR

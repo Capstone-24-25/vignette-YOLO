@@ -21,13 +21,20 @@ This project utilizes YOLOv11, specifically the YOLOv11n implementation by Ultra
 - data: Contains the dataset files for the project.
   - consolidated.csv – a combined dataset used for analysis or training.
 - models: Stores machine learning models.
-  - yolov11n-best.pt – the trained YOLO model file.
+  - yolov11m-best.pt – A trained YOLO model (medium version).
+  - yolov11n-best.pt – A trained YOLO model (nano version).
 - scripts: Includes Python scripts for data processing and preprocessing.
   - consolidatecsvs.py – script to merge multiple CSVs into a consolidated dataset.
-  - yolo_preprocess.py – script to prepare data for the YOLO model.
+  - demo.py – Script to demonstrate the YOLO model's performance on videos or images.
+  - sample_yolo.py – Script showcasing how to use the YOLO model on sample data.
+  - yolo_preprocess.py – Script to prepare data for the YOLO model.
+- video: Contains video files for demonstration purposes.
+  - demo-labeled.avi – A video with labeled predictions from the YOLO model.
+  - demo.mkv – A raw input video used for testing or showcasing the model.
+- .DS_Store: A macOS system file that can be ignored.
 - .gitignore: Specifies files and directories to exclude from version control.
 - README.md: Provides an overview of the project
-- main.ipynb: Jupyter notebook for running the main analysis or workflows.
+- main.ipynb: Jupyter Notebook for running the main analysis or workflows. It serves as an interactive guide of our methods by integrating code with step-by-step explanations.
 
 ## Reference List 🧑‍🎓
 

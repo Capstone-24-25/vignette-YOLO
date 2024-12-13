@@ -10,7 +10,7 @@
 #SBATCH --mail-type ALL
 
 module purge all
-module load cuda/11.6
+module load cuda/12.1
 source source /sw/csc/anaconda/anaconda3/bin/activate
 conda activate ultralytics-env
 

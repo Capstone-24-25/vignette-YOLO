@@ -8,8 +8,8 @@
 
 from ultralytics import YOLO, settings
 
-model = YOLO("./models/yolov11n-best.pt")
+model = YOLO("yolo11x.pt")
 
 # settings.update(data_dir = "/home/josephzaki/vignette-YOLO/ultralytics")
 
-results = model.train(data = "./data/ultralytics/mad.yaml", epochs=50, imgsz=640, batch=-1, cache = True)
+results = model.train(data = "./data/ultralytics/mad.yaml", epochs=300, imgsz=640, batch=-1, cache = True)

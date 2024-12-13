@@ -35,7 +35,7 @@ Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016, June). You Only Look
 
 Jiang, P., Ergu, D., Liu, F., Cai, Y., & Ma, B. (2022). A Review of Yolo Algorithm Developments. Procedia Computer Science, 199, 1066–1073. doi:10.1016/j.procs.2022.01.135
 
-## Instructions on Contributing
+## Instructions on Contributing 🤔
 
 1. Fork the Repository
 2. Clone the Forked Repository to your local machine
@@ -55,7 +55,7 @@ git checkout -b <branch-name>
 5. Push Changes to Your Fork
 6. Open a Pull Request
 
-##  Instructions on Use (draft)
+##  Instructions on Use 📝
 
 We trained two models stored in the models directory, yolov11n-best and yolov11m-best. Please use the yolov11m-best model, as it is our better performing model.
 

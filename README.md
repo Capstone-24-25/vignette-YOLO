@@ -37,7 +37,7 @@ This project utilizes YOLOv11, specifically the YOLOv11n implementation by Ultra
 - .DS_Store: A macOS system file that can be ignored.
 - .gitignore: Specifies files and directories to exclude from version control.
 - README.md: Provides an overview of the project
-- main.ipynb: Jupyter Notebook for running the main analysis or workflows. It serves as an interactive guide of our methods by integrating code with step-by-step explanations.
+- yolo11-inference.ipynb: Jupyter Notebook for running the main analysis or workflows. It serves as an interactive guide of our methods by integrating code with step-by-step explanations.
 
 ## Reference List 🧑‍🎓
 

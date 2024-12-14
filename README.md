@@ -24,11 +24,12 @@ This project utilizes YOLOv11, specifically the YOLOv11n implementation by Ultra
   - yolov11n-best.pt – A trained YOLO model (nano version).
 - scripts: Includes Python scripts for data processing and preprocessing.
   - slurm/ – Contains job files for training on [UCSB CSC Pod Cluster](https://csc.cnsi.ucsb.edu/)
-  - training-hpc – Contains python files used for training (or continuing training) yolo11x model on [UCSB CSC Pod Cluster](https://csc.cnsi.ucsb.edu/)
+  - training-hpc/ – Contains python files used for training (or continuing training) yolo11x model on [UCSB CSC Pod Cluster](https://csc.cnsi.ucsb.edu/)
   - consolidatecsvs.py – script to merge multiple CSVs into a consolidated dataset.
   - demo.py – Script to demonstrate the YOLO model's performance on videos or images.
   - sample_yolo.py – Script showcasing how to use the YOLO model on sample data.
   - yolo_preprocess.py – Script to prepare data for the YOLO model.
+  - walkthrough.py – Script demonstrating how to replicate results by training YOLO 11m.
 - video: Contains video files for demonstration purposes. (sample data)
   - demo-labeled.avi – A video with labeled predictions from the YOLO 11m model, demonstrates how the model can be used.
   - demo.mkv – A raw input video used for testing or showcasing the model.

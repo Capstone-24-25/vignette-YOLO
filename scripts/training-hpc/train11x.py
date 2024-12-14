@@ -10,4 +10,4 @@ from ultralytics import YOLO
 
 model = YOLO("yolo11x.pt")
 
-results = model.train(data = "./data/ultralytics/mad.yaml", epochs=300, imgsz=640, batch=-1, cache = True, devices = [0, 1, 2, 3])
+results = model.train(data = "./data/ultralytics/data.yaml", epochs=300, imgsz=640, batch=-1, cache = True, devices = [0, 1, 2, 3])

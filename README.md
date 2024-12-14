@@ -8,13 +8,9 @@ Bennett Bishop, Joseph Zaki, Luke Dillon, Benjamin Drabeck,	Samantha Su
 
 ## Vignette Abstract ✍️
 
-Vignette topic: This project involves building a YOLO (You Only Look Once) object detection model to identify, classify, and localize different types of military aircraft. The model is trained on the Military Aircraft Detection Dataset, which contains images and annotations of various military aircraft types. Our goal is to develop a robust and efficient object detection model capable of detecting multiple aircraft types in an image with high accuracy, while leveraging the YOLO architecture for real-time performance.
-
-Example Data: The project uses a curated dataset of military aircraft containing images and bounding box annotations for various 74 aircraft types such as Tornado, A400M, F18, etc.
+This project focuses on building a YOLO (You Only Look Once) object detection model to identify, classify, and localize various types of military aircraft. The model is trained using the Military Aircraft Detection Dataset, which includes images for different military aircraft types. We utilize YOLOv11, specifically the YOLOv11n implementation by Ultralytics, to carry out the object detection tasks. The model, consisting of 2.6 million parameters and 218 layers, achieved a mean Average Precision (mAP) of 0.567 at a 0.5 Intersection over Union (IoU) threshold. While the performance is moderate, the results indicate that a larger model could improve accuracy. To assist with demonstration and testing, the repository includes two example video files in the video directory. The overarching goal of this project is to develop a robust and efficient object detection model that can accurately detect multiple aircraft types in real time, leveraging the YOLO architecture's strengths.
 
 Data Source: [Military Aircraft Detection](https://www.kaggle.com/datasets/a2015003713/militaryaircraftdetectiondataset)
-
-This project utilizes YOLOv11, specifically the YOLOv11n implementation by Ultralytics, to perform object detection tasks. The model, with 2.6 million parameters and 218 layers, achieved a mean Average Precision (mAP) of 0.567 at a 0.5 Intersection over Union (IoU) threshold. While the model performs moderately well, the results suggest that a larger model could yield better performance.
 
 ## Repository Contents 📙
 

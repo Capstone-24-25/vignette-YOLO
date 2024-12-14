@@ -21,9 +21,12 @@ This project utilizes YOLOv11, specifically the YOLOv11n implementation by Ultra
 - data: Contains the dataset files for the project.
   - consolidated.csv – a combined dataset used for analysis or training.
 - models: Stores machine learning models.
+  - yolo11x-50epochs-results – Contains results.csv and images from yolo11x model training (model is too large to upload to GitHub)
   - yolov11m-best.pt – A trained YOLO model (medium version).
   - yolov11n-best.pt – A trained YOLO model (nano version).
 - scripts: Includes Python scripts for data processing and preprocessing.
+  - slurm/ – Contains job files for training on [UCSB CSC Pod Cluster](https://csc.cnsi.ucsb.edu/)
+  - training-hpc – Contains python files used for training (or continuing training) yolo11x model on [UCSB CSC Pod Cluster](https://csc.cnsi.ucsb.edu/)
   - consolidatecsvs.py – script to merge multiple CSVs into a consolidated dataset.
   - demo.py – Script to demonstrate the YOLO model's performance on videos or images.
   - sample_yolo.py – Script showcasing how to use the YOLO model on sample data.

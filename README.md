@@ -18,9 +18,7 @@ This project utilizes YOLOv11, specifically the YOLOv11n implementation by Ultra
 
 ## Repository Contents 📙
 
-- data: Contains the dataset files for the project.
-  - consolidated.csv – a combined dataset used for analysis or training.
-- models: Stores machine learning models.
+- models: Stores machine learning models and some results.
   - yolo11x-50epochs-results – Contains results.csv and images from yolo11x model training (model is too large to upload to GitHub)
   - yolov11m-best.pt – A trained YOLO model (medium version).
   - yolov11n-best.pt – A trained YOLO model (nano version).
@@ -31,13 +29,13 @@ This project utilizes YOLOv11, specifically the YOLOv11n implementation by Ultra
   - demo.py – Script to demonstrate the YOLO model's performance on videos or images.
   - sample_yolo.py – Script showcasing how to use the YOLO model on sample data.
   - yolo_preprocess.py – Script to prepare data for the YOLO model.
-- video: Contains video files for demonstration purposes.
-  - demo-labeled.avi – A video with labeled predictions from the YOLO model.
+- video: Contains video files for demonstration purposes. (sample data)
+  - demo-labeled.avi – A video with labeled predictions from the YOLO 11m model, demonstrates how the model can be used.
   - demo.mkv – A raw input video used for testing or showcasing the model.
-- .DS_Store: A macOS system file that can be ignored.
-- .gitignore: Specifies files and directories to exclude from version control.
-- README.md: Provides an overview of the project
-- yolo11-inference.ipynb: Jupyter Notebook for running the main analysis or workflows. It serves as an interactive guide of our methods by integrating code with step-by-step explanations.
+- .gitignore - Specifies files and directories to exclude from version control.
+- README.md - Provides an overview of the project
+- requirements.txt - List of dependencies for easy installation with pip.
+- yolo11-inference.ipynb - Jupyter Notebook for running the main analysis or workflows. It serves as an interactive guide of our methods by integrating code with step-by-step explanations.
 
 ## Reference List 🧑‍🎓
 

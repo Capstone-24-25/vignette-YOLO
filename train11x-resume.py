@@ -8,6 +8,6 @@
 
 from ultralytics import YOLO
 
-model = YOLO("./runs/detect/train/best.pt")
+model = YOLO("./runs/detect/train/weights/best.pt")
 
-results = model.train(resume = True, devices = [0, 1, 2, 3])
+results = model.train(resume = True, epochs=300, imgsz=640, batch=16, cache=True, device = [0, 1, 2, 3])

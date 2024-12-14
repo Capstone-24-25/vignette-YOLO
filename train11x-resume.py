@@ -8,6 +8,6 @@
 
 from ultralytics import YOLO
 
-model = YOLO("yolo11x.pt")
+model = YOLO("./runs/detect/train/best.pt")
 
-results = model.train(data = "./data/ultralytics/mad.yaml", epochs=300, imgsz=640, batch=-1, cache = True, devices = [0, 1, 2, 3])
+results = model.train(resume = True, devices = [0, 1, 2, 3])

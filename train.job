@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 #SBATCH -J "trainYOLOx"
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -10,7 +10,7 @@
 #SBATCH --mail-type ALL
 
 module purge all
-module load cuda/12.1
+module load cuda/11.7
 source /sw/csc/anaconda/anaconda3/bin/activate
 conda activate ultralytics-env
 
